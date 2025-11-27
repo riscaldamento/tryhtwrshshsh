@@ -1,27 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;700&family=Karla:wght@300;400;500;700&display=swap');
 
 :root {
-    /* Palette Solida: Blu Notte e Oro Rame */
-    --color-dark-bg: #091A2A; 
-    --color-light-bg: #F7F8F3; 
+    /* Palette: Nero Seta e Oro Bianco */
+    --color-dark-bg: #0A0A0A; /* Nero Seta */
+    --color-light-bg: #EFEFEF; /* Bianco Freddo */
     --color-primary-text-dark: #FFFFFF;
-    --color-secondary-text-dark: #AAB7C4;
+    --color-secondary-text-dark: #A0A0A0;
     --color-primary-text-light: #1A1A1A;
-    --color-secondary-text-light: #4A5568; 
-    --color-accent: #FFD166; /* Oro Rame Brillante */
-    --color-warning: #FF5733; 
-    --color-accent-bg-dark: #1A344F; /* Un blu più intenso per l'impatto */
+    --color-secondary-text-light: #5A5A5A; 
+    --color-accent: #DAA520; /* Oro Bianco (Goldenrod) */
+    --color-warning: #C73838; 
+    --color-accent-bg-dark: #1F1F1F; 
 
     --font-heading: 'Crimson Pro', serif; 
     --font-body: 'Karla', sans-serif; 
 }
 
-/* Reset e Transizioni */
+/* Reset e Transizioni Morbide */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.5s ease-out, color 0.5s ease-out, transform 0.4s ease-out, box-shadow 0.4s ease-out;
+    /* Transizione elegante per tutti gli elementi */
+    transition: background-color 0.5s ease-out, color 0.5s ease-out, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 body {
@@ -32,26 +33,34 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Tipografia Forte --- */
-h1 { font-size: 5.8vw; font-weight: 700; }
-h2 { font-size: 3.8vw; font-weight: 700; color: var(--color-accent); margin-bottom: 1.2em; }
-h3 { font-size: 1.8vw; font-weight: 700; }
+/* --- Spaziatura Perfetta (Utilizzo di vw per la scala Alfaro) --- */
+h1 { 
+    font-size: 6.2vw; /* Titolo più grande */
+    font-weight: 700; 
+}
+h2 { 
+    font-size: 4.2vw; 
+    font-weight: 700; 
+    color: var(--color-accent); /* Accento Oro Bianco */
+    margin-bottom: 0.8em; 
+}
+h3 { font-size: 1.9vw; font-weight: 700; }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px; /* Contenitore più ampio per respiro */
     margin: auto;
-    padding: 8vw 1.5rem; 
+    padding: 10vw 2rem; /* Spazio generoso */
     text-align: center;
 }
 
 .subtitle {
-    font-size: 1.4vw;
+    font-size: 1.6vw; /* Sottotitolo più audace */
     font-weight: 300;
-    margin-bottom: 6vw; 
-    line-height: 1.5;
+    margin-bottom: 8vw; /* Grande stacco dopo il sottotitolo */
+    color: var(--color-secondary-text-dark); 
 }
 
-/* --- Tonalità di Sfondo Solide --- */
+/* --- Sezioni a Contrasto (Dark/Light) --- */
 .section-dark {
     background-color: var(--color-dark-bg); 
     color: var(--color-primary-text-dark);
@@ -60,106 +69,125 @@ h3 { font-size: 1.8vw; font-weight: 700; }
     background-color: var(--color-light-bg); 
     color: var(--color-primary-text-light);
 }
+.section-light h2 { color: var(--color-primary-text-light); } 
+.section-light .subtitle { color: var(--color-secondary-text-light); }
 
-/* Nuova sezione d'impatto solida (ex Parallasse) */
 .section-accent-dark {
     background-color: var(--color-accent-bg-dark); 
     color: var(--color-primary-text-dark);
-    padding: 10vw 1.5rem;
 }
-.section-accent-dark h2 { color: var(--color-warning); } /* Forte contrasto */
+.section-accent-dark h2 { color: var(--color-accent); } 
 
-/* --- Hero Section Solida --- */
+/* --- Hero Section & CTA --- */
 .hero-section-solid {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+}
+.hero-content h1 {
+    letter-spacing: -0.05em; /* Stile Eric Alfaro per i titoli */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); 
 }
 
 .cta-button {
-    /* Stili CTA invariati */
-    display: inline-block;
     background: var(--color-accent); 
     color: var(--color-dark-bg); 
-    padding: 1.8vw 4.5vw;
+    padding: 1.5vw 4vw;
     font-weight: 700;
-    box-shadow: 0 5px 15px rgba(255, 209, 102, 0.5); 
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    letter-spacing: 0.1em;
+    border-radius: 2px; /* Dettaglio geometrico */
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4); 
+    /* Animazione di lusso: più lento e in curva */
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .cta-button:hover {
     transform: scale(1.05) translateY(-5px); 
-    box-shadow: 0 10px 25px rgba(255, 209, 102, 0.7);
+    box-shadow: 0 10px 25px rgba(218, 165, 32, 0.6);
 }
 
-
-/* --- Griglia Dati & Cause (Invariate) --- */
+/* --- Griglie Dati (Dati Cruciali) --- */
 .data-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 4vw; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 5vw; 
 }
 .data-item {
-    background: var(--color-dark-bg);
-    /* ... stili ... */
+    background: var(--color-dark-bg); 
+    padding: 4vw; 
+    border-radius: 6px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
-/* ... cause-grid, solution-grid stili ... */
+.data-value {
+    font-size: 7vw; /* Valori grandi e d'impatto */
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
 
-
-/* --- Sezione Siccità (Flexbox con Box Solido) --- */
-#impatto-siccita .flex-content {
-    display: flex;
-    gap: 6vw;
-    align-items: center;
-    text-align: left;
+/* --- Griglia Cause / Soluzioni (Dettagli Geometrioci) --- */
+.cause-grid, .solution-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 5vw; 
     margin-top: 5vw;
+    padding-top: 3vw;
+    border-top: 1px solid var(--color-accent); /* Linea di divisione dorata */
 }
 
-#impatto-siccita .text-box {
-    flex: 1;
-    max-width: 55%;
+.cause-item, .solution-item {
+    padding: 2.5vw 0; 
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.cause-item:hover, .solution-item:hover {
+    /* Animazione più discreta */
+    transform: translateY(-5px); 
+}
+
+.cause-item h3, .solution-item h3 { 
+    font-size: 1.6vw;
+    color: var(--color-accent); 
+    letter-spacing: 0.08em; /* Spaziatura tra le lettere per eleganza */
+}
+
+/* --- Sezione Crisi Idrica (Box Solido) --- */
+#impatto-siccita .flex-content {
+    gap: 8vw; /* Spazio maggiore tra testo e box */
+    margin-top: 6vw;
 }
 
 .image-box-solid {
-    flex: 1;
-    min-height: 40vw; 
-    border-radius: 15px; 
-    background: var(--color-accent); /* Box di impatto in Oro Rame */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    min-height: 35vw; 
+    background: var(--color-accent); /* Box di impatto in Oro Bianco */
+    border-radius: 4px; 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.image-box-solid:hover {
-    transform: scale(1.03) rotateZ(-1deg);
-}
-
-/* --- Footer (Invariato) --- */
+/* --- Footer --- */
 .footer-section {
     background: var(--color-dark-bg);
     color: var(--color-secondary-text-dark);
-    text-align: center;
     padding: 3vw 0;
     font-size: 1vw;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid var(--color-accent); /* Separatore elegante */
 }
 
-/* --- Media Queries (Invariate) --- */
+/* --- Media Queries --- */
 @media (max-width: 1024px) {
-    h1 { font-size: 4.5rem; }
-    h2 { font-size: 3rem; }
-    h3 { font-size: 1.5rem; }
-    .section-accent-dark { padding: 12vw 1.5rem; }
+    h1 { font-size: 5rem; }
+    h2 { font-size: 3.5rem; }
+    h3 { font-size: 1.8rem; }
+    .subtitle { font-size: 1.4rem; }
+    .container { padding: 15vw 2rem; }
+    .data-value { font-size: 4rem; }
+    
     #impatto-siccita .flex-content {
         flex-direction: column;
-        text-align: center;
     }
-    .image-box-solid { min-height: 50vw; }
+    .image-box-solid { min-height: 60vw; }
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 3.5rem; }
-    h2 { font-size: 2.2rem; }
-    h3 { font-size: 1.3rem; }
-    .data-value { font-size: 3rem; }
+    h1 { font-size: 4rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 1.5rem; }
+    .data-value { font-size: 3.5rem; }
 }
